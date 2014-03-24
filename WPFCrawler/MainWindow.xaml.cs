@@ -89,7 +89,7 @@ namespace WPFCrawler
         }
 
         private void ckbSelectedAll_Checked(object sender, RoutedEventArgs e) {
-            this.dataGrid.SelectAll();
+            this.dataGrid.SelectAll();            
         }
 
         private void ckbSelectedAll_Unchecked(object sender, RoutedEventArgs e) {
@@ -97,5 +97,49 @@ namespace WPFCrawler
         }
         #endregion
 
+        private void chkSelectAll_Checked(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void chkUnselectAll_Checked(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void chkInverseSelect_Checked(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void dataGrid_PreviewMouseDown(object sender, MouseButtonEventArgs e) {
+            if (IsUnderTabHeader(e.OriginalSource as DependencyObject))
+                CommitTables(this.dataGrid);
+        }
+
+        private bool IsUnderTabHeader(DependencyObject control) {
+            if (control is TabItem)
+                return true;
+            DependencyObject parent = VisualTreeHelper.GetParent(control);
+            if (parent == null)
+                return false;
+            return IsUnderTabHeader(parent);
+        }
+
+        private void CommitTables(DependencyObject control) {
+            if (control is DataGrid) {
+                DataGrid grid = control as DataGrid;
+                grid.CommitEdit(DataGridEditingUnit.Row, true);
+                return;
+            }
+            int childrenCount = VisualTreeHelper.GetChildrenCount(control);
+            for (int childIndex = 0; childIndex < childrenCount; childIndex++)
+                CommitTables(VisualTreeHelper.GetChild(control, childIndex));
+        }
+
+        private void Item_Unchecked(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void Item_Checked(object sender, RoutedEventArgs e) {
+
+        }
     }
 }

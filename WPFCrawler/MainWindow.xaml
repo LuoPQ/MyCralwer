@@ -4,8 +4,10 @@
         Title="爬虫" Height="500" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30px"/>
             <RowDefinition Height="60px"/>
-            <RowDefinition/>
+            <RowDefinition Height="20px"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100px"/>
@@ -14,27 +16,34 @@
             <ColumnDefinition Width="160px"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="14px">要提取的URL:</TextBlock>
-        <TextBox Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Width="500px" HorizontalAlignment="Left" Height="30" FontSize="20px"/>
-        <Button Content="提取" Grid.Column="1" Grid.Row="0" Margin="520,15,15,15"  Width="75" Cursor="Hand"/>
-        <TextBox Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" Width="150" Height="30" FontSize="20px" />
+        <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4">
+            <MenuItem></MenuItem>
+        </Menu>
+        <TextBlock Grid.Column="0" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" FontSize="14px">要提取的URL:</TextBlock>
+        <TextBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Width="500px" HorizontalAlignment="Left" Height="30" FontSize="20px"/>
+        <Button Content="提取" Grid.Column="1" Grid.Row="1" Margin="520,15,15,15"  Width="75" Cursor="Hand"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Height="30px" Text="URL关键字" TextAlignment="Center" Padding="8"/>
+        <TextBox Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" Width="150" Height="30" FontSize="20px" />
 
-        <Grid Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" >
-            <DataGrid Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+        <CheckBox Name="chkSelectAll" Margin="10,0,580,0"  Grid.Column="0" Grid.Row="2"  Content="全选" Checked="chkSelectAll_Checked" Grid.ColumnSpan="3" />
+        <CheckBox Name="chkUnselectAll" Margin="80,0,580,0"  Grid.Column="0" Grid.Row="2"  Content="全不选" Checked="chkUnselectAll_Checked" Grid.ColumnSpan="3" />
+        <CheckBox Name="chkInverseSelect" Margin="150,0,580,0" Grid.Column="0" Grid.Row="2"  Content="反选" Checked="chkInverseSelect_Checked" Grid.ColumnSpan="3" />
+        <Grid Grid.Column="0" Grid.Row="3"  Grid.ColumnSpan="2">
+            <DataGrid Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Extended" SelectionUnit="Cell" PreviewMouseDown="dataGrid_PreviewMouseDown">
                 <DataGrid.Columns>
-                    <DataGridCheckBoxColumn Width="80" Binding="{Binding Path=IsSelected,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridRow}}}">
-                        <DataGridCheckBoxColumn.HeaderTemplate>
+                    <DataGridTemplateColumn Header="是否选择" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <CheckBox x:Name="ckbSelectedAll" Content="全选" Checked="ckbSelectedAll_Checked" Unchecked="ckbSelectedAll_Unchecked" />
+                                <CheckBox Checked="Item_Checked" Unchecked="Item_Unchecked" CommandParameter="{Binding Path=Id}"/>
                             </DataTemplate>
-                        </DataGridCheckBoxColumn.HeaderTemplate>
-                    </DataGridCheckBoxColumn>
-                    <DataGridTextColumn Header="页面标题" Binding="{Binding UserName}" Width="140"/>
-                    <DataGridTextColumn Header="URL" Width="*" Binding="{Binding Password}"/>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="页面标题" Binding="{Binding Path=Title}" Width="140" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="URL" Width="*" Binding="{Binding Path=Url}" IsReadOnly="True"/>
                     <DataGridTemplateColumn Header="操作" Width="140">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="删除"  Width="75" Height="23" Cursor="Hand" Click="btnDelete" CommandParameter="{Binding Path=UId}"/>
+                                <Button Content="删除"  Width="75" Height="23" Cursor="Hand" Click="btnDelete" CommandParameter="{Binding Path=Id}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -42,8 +51,5 @@
             </DataGrid>
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
-            <Button Content="添加行" Name="btnAdd" Click="btnAdd_Click" />
-        </Grid>
     </Grid>
 </Window>
