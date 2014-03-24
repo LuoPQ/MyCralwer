@@ -13,14 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFCrawler.Entities;
 
-namespace WPFCrawler {
+namespace WPFCrawler
+{
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window {
+    public partial class MainWindow : Window
+    {
         private List<int> selectUId = new List<int>();//保存多选用户ID  
-        private List<User> userList = new List<User>();//数据源
+        private List<Link> linkList = new List<Link>();//数据源
 
         public MainWindow() {
             InitializeComponent();
@@ -39,49 +42,49 @@ namespace WPFCrawler {
         /// </summary>
         private void DataBinding() {
             for (int i = 0; i < 5; i++) {
-                User user = new User() {
-                    UId = i + 1,
-                    UserName = "username" + i,
-                    Password = "password" + 1
+                Link link = new Link() {
+                    Id = (i + 1).ToString(),
+                    Title = "username" + i,
+                    Url = "password" + 1
                 };
-                userList.Add(user);
+                linkList.Add(link);
             }
-            this.dataGrid.ItemsSource = userList;
+            this.dataGrid.ItemsSource = linkList;
         }
 
         /// <summary>
         /// 添加一个用户
         /// </summary>
         /// <param name="user"></param>
-        private void AddUser(User user) {
-            userList.Add(user);
+        private void AddLink(Link link) {
+            linkList.Add(link);
         }
 
         /// <summary>  
-        /// 删除一个用户  
+        /// 删除一个链接  
         /// </summary>  
         /// <param name="uid"></param>  
-        private void DeleteUser(int uId) {
-            userList.Remove(userList.Single(u => u.UId == uId));
+        private void DeleteUser(string Id) {
+            linkList.Remove(linkList.Single(u => u.Id == Id));
         }
 
 
         #region 事件处理函数
         private void btnDelete(object sender, RoutedEventArgs e) {
             Button b = sender as Button;
-            int uId = Convert.ToInt32(b.CommandParameter);
-            this.DeleteUser(uId);
+            string id = b.CommandParameter.ToString();
+            this.DeleteUser(id);
             this.dataGrid.Items.Refresh();
         }
 
 
         private void btnAdd_Click(object sender, RoutedEventArgs e) {
-            User user = new User() {
-                UId = 3,
-                UserName = "customer",
-                Password = "1111"
+            Link link = new Link() {
+                Id = "3",
+                Title = "customer",
+                Url = "1111"
             };
-            this.AddUser(user);
+            this.AddLink(link);
             this.dataGrid.Items.Refresh();
         }
 
@@ -91,7 +94,7 @@ namespace WPFCrawler {
 
         private void ckbSelectedAll_Unchecked(object sender, RoutedEventArgs e) {
             this.dataGrid.UnselectAll();
-        } 
+        }
         #endregion
 
     }
