@@ -34,7 +34,7 @@
                     <DataGridTemplateColumn Header="是否选择" Width="80">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <CheckBox Checked="Item_Checked" Unchecked="Item_Unchecked" CommandParameter="{Binding Path=Id}"/>
+                                <CheckBox Name="chkSelected" Checked="Item_Checked" Unchecked="Item_Unchecked" CommandParameter="{Binding Path=Id}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

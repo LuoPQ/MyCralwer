@@ -89,7 +89,7 @@ namespace WPFCrawler
         }
 
         private void ckbSelectedAll_Checked(object sender, RoutedEventArgs e) {
-            this.dataGrid.SelectAll();            
+            this.dataGrid.SelectAll();
         }
 
         private void ckbSelectedAll_Unchecked(object sender, RoutedEventArgs e) {
@@ -98,6 +98,18 @@ namespace WPFCrawler
         #endregion
 
         private void chkSelectAll_Checked(object sender, RoutedEventArgs e) {
+            for (int i = 0; i < this.dataGrid.Items.Count; i++) {
+                DataGridRow dataGridRow = this.dataGrid.ItemContainerGenerator.ContainerFromIndex(i) as DataGridRow;
+                if (dataGridRow != null) {
+                    FrameworkElement cellObj = dataGrid.Columns[0].GetCellContent(dataGridRow);
+                    if (cellObj != null) {
+                        ContentPresenter myContentPresenter = FindVisualChild<ContentPresenter>(cellObj);
+                        //DataTemplate myDataTemplate = myContentPresenter.te;
+                        CheckBox checkBox = (CheckBox)myDataTemplate.FindName("chkSelected", myContentPresenter);
+                        checkBox.IsChecked = true;
+                    }
+                }
+            }
 
         }
 
@@ -140,6 +152,21 @@ namespace WPFCrawler
 
         private void Item_Checked(object sender, RoutedEventArgs e) {
 
+        }
+
+        private childItem FindVisualChild<childItem>(DependencyObject obj)
+            where childItem : DependencyObject {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++) {
+                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+                if (child != null && child is childItem)
+                    return (childItem)child;
+                else {
+                    childItem childOfChild = FindVisualChild<childItem>(child);
+                    if (childOfChild != null)
+                        return childOfChild;
+                }
+            }
+            return null;
         }
     }
 }
