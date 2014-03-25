@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\CityDetails.cs" />
     <Compile Include="Core\Global.cs" />
     <Compile Include="Core\NCrawlerSteps.cs" />
     <Compile Include="Entities\Link.cs" />
@@ -71,6 +72,8 @@
     <Content Include="DLL\HtmlAgilityPack.dll" />
     <Content Include="DLL\NCrawler.dll" />
     <Content Include="DLL\NCrawler.HtmlProcessor.dll" />
+    <Content Include="DLL\ScrapySharp.Core.dll" />
+    <Content Include="DLL\ScrapySharp.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

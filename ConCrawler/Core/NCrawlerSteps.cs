@@ -13,19 +13,20 @@ namespace ConCrawler.Core
 {
     internal class UrlCollectorStep : IPipelineStep
     {
-        public string[] extFilter = ConfigurationManager.AppSettings["extFilter"].Split('|');
-        public string[] keywords = ConfigurationManager.AppSettings["keywords"].Split('|');
+        public string[] excludeFilter = ConfigurationManager.AppSettings["excludeFilter"].Split('|');
+        public string[] includeFilter = ConfigurationManager.AppSettings["includeFilter"].Split('|');
         public void Process(NCrawler.Crawler crawler, NCrawler.PropertyBag propertyBag) {
             lock (this) {
                 //if (propertyBag.Step.Uri.AbsoluteUri.Contains("destination")) {
                 var url = propertyBag.Step.Uri.AbsoluteUri;
-                if (keywords.Count(k => url.Contains(k)) <= 0) {
+                if (includeFilter.Count(k => url.Contains(k)) <= 0) {
                     return;
                 }
 
-                if (extFilter.Count(e => url.Contains(e)) <= 0) {
-                    Console.Out.WriteLine(ConsoleColor.Gray, "Url: {0},Status:{1}", propertyBag.Step.Uri.AbsoluteUri, propertyBag.StatusCode);
-
+                if (excludeFilter.Count(e => url.Contains(e)) <= 0) {
+                    Console.Out.WriteLine(ConsoleColor.Gray, "Url: {0},Status:{1}", url, propertyBag.StatusCode);
+                    WebClient webClient = new WebClient();
+                    //webClient.DownloadString(url)
                     Global.LinkList.Add(new Link() {
                         Id = DateTime.Now.ToString("yyyyMMddHHmmss"),
                         Title = propertyBag.Title,
