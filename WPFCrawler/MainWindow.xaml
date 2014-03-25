@@ -25,9 +25,9 @@
         <TextBlock Grid.Row="1" Grid.Column="2" Height="30px" Text="URL关键字" TextAlignment="Center" Padding="8"/>
         <TextBox Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" Width="150" Height="30" FontSize="20px" />
 
-        <CheckBox Name="chkSelectAll" Margin="10,0,580,0"  Grid.Column="0" Grid.Row="2"  Content="全选" Checked="chkSelectAll_Checked" Grid.ColumnSpan="3" />
-        <CheckBox Name="chkUnselectAll" Margin="80,0,580,0"  Grid.Column="0" Grid.Row="2"  Content="全不选" Checked="chkUnselectAll_Checked" Grid.ColumnSpan="3" />
-        <CheckBox Name="chkInverseSelect" Margin="150,0,580,0" Grid.Column="0" Grid.Row="2"  Content="反选" Checked="chkInverseSelect_Checked" Grid.ColumnSpan="3" />
+        <CheckBox Visibility="Hidden" Name="chkSelectAll" Margin="10,0,580,0"  Grid.Column="0" Grid.Row="2"  Content="全选" Checked="chkSelectAll_Checked" Grid.ColumnSpan="3" />
+        <CheckBox Visibility="Hidden" Name="chkUnselectAll" Margin="80,0,580,0"  Grid.Column="0" Grid.Row="2"  Content="全不选" Checked="chkUnselectAll_Checked" Grid.ColumnSpan="3" />
+        <CheckBox Visibility="Hidden" Name="chkInverseSelect" Margin="150,0,580,0" Grid.Column="0" Grid.Row="2"  Content="反选" Checked="chkInverseSelect_Checked" Grid.ColumnSpan="3" />
         <Grid Grid.Column="0" Grid.Row="3"  Grid.ColumnSpan="2">
             <DataGrid Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Extended" SelectionUnit="Cell" PreviewMouseDown="dataGrid_PreviewMouseDown">
                 <DataGrid.Columns>

@@ -65,8 +65,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\Global.cs" />
+    <Compile Include="Core\NCrawlerSteps.cs" />
     <Compile Include="Core\UrlFilter.cs" />
     <Compile Include="Entities\Link.cs" />
+    <Compile Include="Extensions\DataGridExt.cs" />
     <Compile Include="Helpers\XMLHelper.cs" />
     <Compile Include="Helpers\NCrawlerHelper.cs" />
     <Page Include="MainWindow.xaml">
