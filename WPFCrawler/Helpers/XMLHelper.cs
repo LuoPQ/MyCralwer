@@ -11,7 +11,6 @@ namespace WPFCrawler.Helpers
 {
     public static class XMLHelper
     {
-
         /// <summary>
         /// 将一个对象序列化成xml字符串
         /// </summary>

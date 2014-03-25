@@ -43,7 +43,7 @@
                     <DataGridTemplateColumn Header="操作" Width="140">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="删除"  Width="75" Height="23" Cursor="Hand" Click="btnDelete" CommandParameter="{Binding Path=Id}"/>
+                                <Button Content="删除"  Width="75" Height="23" Cursor="Hand" Click="Button_Click" CommandParameter="{Binding Path=Id}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

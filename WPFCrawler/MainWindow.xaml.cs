@@ -76,7 +76,7 @@ namespace WPFCrawler {
 
 
         #region 事件处理函数
-        private void btnDelete(object sender, RoutedEventArgs e) {
+        private void Button_Click(object sender, RoutedEventArgs e) {
             Button b = sender as Button;
             string id = b.CommandParameter.ToString();
             this.DeleteLink(id);
@@ -170,5 +170,7 @@ namespace WPFCrawler {
             return null;
         }
         #endregion
+
+       
     }
 }

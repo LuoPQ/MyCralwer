@@ -14,5 +14,10 @@ namespace ConCrawler.Core {
         /// 用来保存爬到的链接
         /// </summary>
         public static List<Link> LinkList = new List<Link>();
+
+        /// <summary>
+        /// 从xml文件中读取的链接
+        /// </summary>
+        public static List<Link> OldLink = new List<Link>();
     }
 }

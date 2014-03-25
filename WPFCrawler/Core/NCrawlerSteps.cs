@@ -15,6 +15,7 @@ namespace WPFCrawler.Core {
                     Id = DateTime.Now.ToString("yyyyMMddHHmmss"),
                     Title = propertyBag.Title,
                     Url = propertyBag.Step.Uri.AbsoluteUri
+
                 });
             }
         }
