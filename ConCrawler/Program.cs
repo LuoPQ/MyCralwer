@@ -12,20 +12,23 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace ConCrawler {
-    class Program {
+namespace ConCrawler
+{
+    class Program
+    {
 
-        //static string strIncReg = @"city\?cityCode=|destination";
-        //public static IFilter[] IncludeFilter = new[]
-        //    {
-        //        (RegexFilter)new Regex(strIncReg,
-        //            RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)
-        //    };
+        static string strIncReg = @"city\?cityCode=|destination";
+        public static IFilter[] IncludeFilter = new[]
+            {
+                (RegexFilter)new Regex(strIncReg,
+                    RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)
+            };
 
-
+        string str = @"(\.jpg|\.css|\.js|\.gif|\.jpeg|\.png|\.ico)";
         public static IFilter[] ExcludeFilter = new[]
             {                
-                (RegexFilter)new Regex(@"(\.jpg|\.css|\.js|\.gif|\.jpeg|\.png|\.ico)",
+
+                (RegexFilter)new Regex(@".+",
                     RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)
             };
 
@@ -43,8 +46,8 @@ namespace ConCrawler {
             Console.WriteLine("爬虫开始行动");
 
             NCrawlerHelper crawler = new NCrawlerHelper();
-            string url = "http://diaosbook.com";
-            crawler.Crawl(url, maxThreadCount, maxCrawlDepth, null, ExcludeFilter);
+            string url = "http://www.kopu.cn/destination";
+            crawler.Crawl(url, maxThreadCount, maxCrawlDepth, IncludeFilter, ExcludeFilter);
 
             Console.WriteLine("解析完成");
             Console.ReadKey();
