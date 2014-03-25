@@ -59,6 +59,7 @@
     <Compile Include="Core\NCrawlerSteps.cs" />
     <Compile Include="Entities\Link.cs" />
     <Compile Include="Extensions\TextWriterExt.cs" />
+    <Compile Include="Helpers\CityHtmlHelper.cs" />
     <Compile Include="Helpers\NCrawlerHelper.cs" />
     <Compile Include="Helpers\XMLHelper.cs" />
     <Compile Include="Program.cs" />
