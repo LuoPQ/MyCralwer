@@ -19,7 +19,10 @@ namespace ConCrawler.Helpers {
                      MaximumThreadCount = maxThreadCount,
                      MaximumCrawlDepth = maxThreadCount,
                      IncludeFilter = IncludeFilter,
-                     ExcludeFilter = ExcludeFilter
+                     ExcludeFilter = ExcludeFilter,
+                     MaximumCrawlCount = 100,
+                     UserAgent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0)"
+                     
                  }) {
                 crawler.Crawl();
             }

@@ -18,7 +18,7 @@ namespace ConCrawler.Core {
         /// <summary>
         /// 从xml文件中读取的链接
         /// </summary>
-        public static List<Link> OldLink = new List<Link>();
+        //public static List<Link> OldLink = new List<Link>();
 
         /// <summary>
         /// 城市信息列表

@@ -31,11 +31,15 @@ namespace ConCrawler.Helpers {
         /// <param name="obj"></param>
         /// <param name="path"></param>
         /// <param name="encoding"></param>
-        public static void XmlSerializeToFile(object obj, string path, Encoding encoding) {
-            if (string.IsNullOrWhiteSpace(path)) {
-                throw new ArgumentNullException("path");
+        public static void XmlSerializeToFile(object obj, string dirctoryPath, string fileName, Encoding encoding) {
+            if (string.IsNullOrWhiteSpace(dirctoryPath)) {
+                throw new ArgumentNullException("dirctoryPath");
             }
-            using (FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write)) {
+            if (string.IsNullOrWhiteSpace(fileName)) {
+                throw new ArgumentNullException("fileName");
+            }
+            dirctoryPath = CreateDirectory(dirctoryPath);
+            using (FileStream stream = new FileStream(dirctoryPath + fileName, FileMode.OpenOrCreate, FileAccess.Write)) {
                 XmlSerializeInternal(stream, obj, encoding);
             }
         }
@@ -105,6 +109,16 @@ namespace ConCrawler.Helpers {
                 serializer.Serialize(writer, obj);
                 writer.Close();
             }
+        }
+
+        private static string CreateDirectory(string directoryPath) {
+            if (!Directory.Exists(directoryPath)) {
+                Directory.CreateDirectory(directoryPath);
+            }
+            if (!directoryPath.EndsWith("/")) {
+                return directoryPath + "/";
+            }
+            return directoryPath;
         }
     }
 }
