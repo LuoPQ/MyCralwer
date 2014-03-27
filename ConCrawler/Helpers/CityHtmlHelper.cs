@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ScrapySharp.Extensions;
 using System.Configuration;
+using System.Net;
 
 namespace ConCrawler.Helpers {
     public class CityHtmlHelper {
@@ -29,7 +30,10 @@ namespace ConCrawler.Helpers {
 
         private static CityItem GetDataFromHtml(string url, string item, out string cityName) {
             var itemUrl = url + "&column=" + item;
-            var html = new ScrapingBrowser().DownloadString(new Uri(itemUrl));
+            var browser = new ScrapingBrowser() {
+                Proxy = new WebProxy("182.118.31.110", 80)
+            };
+            var html = browser.DownloadString(new Uri(itemUrl));
 
             if (html.Contains("非常抱歉")) {
                 cityName = "";

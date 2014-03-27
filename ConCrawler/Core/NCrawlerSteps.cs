@@ -25,22 +25,24 @@ namespace ConCrawler.Core {
                 if (includeFilter.Count(k => url.Contains(k)) <= 0) {
                     return;
                 }
+                if (excludeFilter.Count(e => url.Contains(e)) > 0) {
+                    return;
+                }
                 if (Global.LinkList.Count(l => l.Url == url) > 0) {
                     return;
                 }
-                if (excludeFilter.Count(e => url.Contains(e)) <= 0) {
-                    if (!url.Contains("cityCode")) {
-                        return;
-                    }
 
-                    Global.LinkList.Add(new Link() {
-                        Id = DateTime.Now.ToString("yyyyMMddHHmmss"),
-                        Title = propertyBag.Title,
-                        Url = url
-                    });
-                    Global.CityList.Add(CityHtmlHelper.GetCityDetails(url));
-                    Console.Out.WriteLine(ConsoleColor.Gray, "Url: {0},Status:{1}。", url, propertyBag.StatusCode);
+                if (!url.Contains("cityCode")) {
+                    return;
                 }
+                Global.LinkList.Add(new Link() {
+                    Id = DateTime.Now.ToString("yyyyMMddHHmmss"),
+                    Title = propertyBag.Title,
+                    Url = url
+                });
+                Global.CityList.Add(CityHtmlHelper.GetCityDetails(url));
+                Console.Out.WriteLine(ConsoleColor.Gray, "Url: {0},Status:{1}。", url, propertyBag.StatusCode);
+
             }
         }
     }

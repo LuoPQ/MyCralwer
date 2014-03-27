@@ -18,16 +18,18 @@ using System.Threading.Tasks;
 namespace ConCrawler {
     class Program {
         static string strIncReg = @"city\?cityCode=|destination";
+
+
+        //string str = @"(\.jpg|\.css|\.js|\.gif|\.jpeg|\.png|\.ico|page)";
+
         static IFilter[] IncludeFilter = new[]
             {
                 (RegexFilter)new Regex(strIncReg,
                     RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)
             };
-
-        //string str = @"(\.jpg|\.css|\.js|\.gif|\.jpeg|\.png|\.ico)";
-        static IFilter[] ExcludeFilter = new[]
+        static IFilter[] ExcludeFilter = ExcludeFilter = new[]
             {                
-                (RegexFilter)new Regex(@".+",
+                (RegexFilter)new Regex(@"(\.jpg|\.css|\.js|\.gif|\.jpeg|\.png|\.ico|column|page|kpflight|user|evalsys|krmblog|qq|entryexit|assistant)",
                     RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)
             };
 
@@ -41,7 +43,7 @@ namespace ConCrawler {
             Console.WriteLine("爬虫开始行动....");
 
             NCrawlerHelper crawler = new NCrawlerHelper();
-            crawler.Crawl(url, maxThreadCount, maxCrawlDepth, IncludeFilter, ExcludeFilter);
+            crawler.Crawl(url, maxThreadCount, maxCrawlDepth, null, ExcludeFilter);
 
             XMLHelper.XmlSerializeToFile(Global.LinkList, path, "dest.xml", Encoding.UTF8);
             XMLHelper.XmlSerializeToFile(Global.CityList, path, "citydetails" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xml", Encoding.UTF8);
