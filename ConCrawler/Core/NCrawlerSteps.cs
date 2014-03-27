@@ -17,6 +17,10 @@ namespace ConCrawler.Core {
         static int count = 0;
         public void Process(NCrawler.Crawler crawler, NCrawler.PropertyBag propertyBag) {
             lock (this) {
+                if (propertyBag.StatusCode == HttpStatusCode.Forbidden || propertyBag.StatusCode == HttpStatusCode.NotFound) {
+                    return;
+                }
+
                 var url = propertyBag.Step.Uri.AbsoluteUri;
                 if (includeFilter.Count(k => url.Contains(k)) <= 0) {
                     return;
@@ -28,13 +32,14 @@ namespace ConCrawler.Core {
                     if (!url.Contains("cityCode")) {
                         return;
                     }
+
                     Global.LinkList.Add(new Link() {
                         Id = DateTime.Now.ToString("yyyyMMddHHmmss"),
                         Title = propertyBag.Title,
                         Url = url
                     });
                     Global.CityList.Add(CityHtmlHelper.GetCityDetails(url));
-                    Console.Out.WriteLine(ConsoleColor.Gray, "Url: {0},Status:{1},解析完成。", url, propertyBag.StatusCode);
+                    Console.Out.WriteLine(ConsoleColor.Gray, "Url: {0},Status:{1}。", url, propertyBag.StatusCode);
                 }
             }
         }

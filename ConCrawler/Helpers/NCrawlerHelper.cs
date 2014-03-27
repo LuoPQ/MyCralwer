@@ -24,7 +24,12 @@ namespace ConCrawler.Helpers {
                      MaxThreadSleepTime = 5000,
                      //UseCookies = true
                  }) {
-                crawler.Crawl();
+                try {
+                    crawler.Crawl();
+                }
+                catch (Exception error) {
+                    Console.WriteLine(error.Message);
+                }
             }
         }
     }
