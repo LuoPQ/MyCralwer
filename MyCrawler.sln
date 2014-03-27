@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlParserDemo", "HtmlParserDemo\HtmlParserDemo.csproj", "{95397E8F-27EF-45BB-8FEB-636CA62822C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConCrawler", "..\..\Git\MyCralwer\ConCrawler\ConCrawler.csproj", "{C35EDC47-4A31-4243-B942-0E125CC66882}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCollector", "ProxyCollector\ProxyCollector.csproj", "{9EDD2730-96C5-4857-8662-65EB62174982}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{95397E8F-27EF-45BB-8FEB-636CA62822C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95397E8F-27EF-45BB-8FEB-636CA62822C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95397E8F-27EF-45BB-8FEB-636CA62822C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95397E8F-27EF-45BB-8FEB-636CA62822C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C35EDC47-4A31-4243-B942-0E125CC66882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35EDC47-4A31-4243-B942-0E125CC66882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35EDC47-4A31-4243-B942-0E125CC66882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35EDC47-4A31-4243-B942-0E125CC66882}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EDD2730-96C5-4857-8662-65EB62174982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EDD2730-96C5-4857-8662-65EB62174982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EDD2730-96C5-4857-8662-65EB62174982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EDD2730-96C5-4857-8662-65EB62174982}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
