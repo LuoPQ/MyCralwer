@@ -16,6 +16,7 @@ namespace ConCrawler.Helpers {
         public static CityDetails GetCityDetails(string url) {
             CityDetails cityDetails = new CityDetails();
             cityDetails.CityCode = url.Substring(url.IndexOf("=") + 1);
+            cityDetails.Url = url;
             string cityName = "";
             foreach (var item in CityItems) {
                 cityDetails.CityItems.Add(GetDataFromHtml(url, item, out cityName));

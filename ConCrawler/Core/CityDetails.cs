@@ -14,6 +14,10 @@ namespace ConCrawler.Core {
         /// 城市名称
         /// </summary>
         public string CityName { get; set; }
+        /// <summary>
+        /// 城市链接
+        /// </summary>
+        public string Url { get; set; }
 
         public List<CityItem> CityItems { get; set; }
 

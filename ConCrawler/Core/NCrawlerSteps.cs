@@ -25,17 +25,16 @@ namespace ConCrawler.Core {
                     return;
                 }
                 if (excludeFilter.Count(e => url.Contains(e)) <= 0) {
-                    //if (!url.Contains("cityCode")) {
-                    //    return;
-                    //}
-                    Console.Out.WriteLine(ConsoleColor.Gray, "Url: {0},Status:{1}", url, propertyBag.StatusCode);
-
+                    if (!url.Contains("cityCode")) {
+                        return;
+                    }
                     Global.LinkList.Add(new Link() {
                         Id = DateTime.Now.ToString("yyyyMMddHHmmss"),
                         Title = propertyBag.Title,
                         Url = url
                     });
                     Global.CityList.Add(CityHtmlHelper.GetCityDetails(url));
+                    Console.Out.WriteLine(ConsoleColor.Gray, "Url: {0},Status:{1},解析完成。", url, propertyBag.StatusCode);
                 }
             }
         }

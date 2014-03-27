@@ -38,7 +38,7 @@ namespace ConCrawler {
 
         static void Main(string[] args) {
             ReadyToCrawl();
-            Console.WriteLine("爬虫开始行动");
+            Console.WriteLine("爬虫开始行动....");
 
             NCrawlerHelper crawler = new NCrawlerHelper();
             crawler.Crawl(url, maxThreadCount, maxCrawlDepth, IncludeFilter, ExcludeFilter);
@@ -46,7 +46,7 @@ namespace ConCrawler {
             XMLHelper.XmlSerializeToFile(Global.LinkList, path, "dest.xml", Encoding.UTF8);
             XMLHelper.XmlSerializeToFile(Global.CityList, path, "citydetails" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xml", Encoding.UTF8);
 
-            Console.WriteLine("解析完成");
+            Console.WriteLine("解析完成。");
             Console.ReadKey();
         }
 
