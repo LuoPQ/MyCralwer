@@ -54,7 +54,6 @@ namespace ConCrawler.Helpers {
                 Name = node.CssSelect("p.introrighttit").FirstOrDefault().InnerText,
                 Content = node.InnerText
             };
-
         }
     }
 }
