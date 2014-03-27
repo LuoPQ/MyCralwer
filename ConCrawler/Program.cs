@@ -18,10 +18,7 @@ using System.Threading.Tasks;
 namespace ConCrawler {
     class Program {
         static string strIncReg = @"city\?cityCode=|destination";
-
-
         //string str = @"(\.jpg|\.css|\.js|\.gif|\.jpeg|\.png|\.ico|page)";
-
         static IFilter[] IncludeFilter = new[]
             {
                 (RegexFilter)new Regex(strIncReg,
@@ -32,7 +29,6 @@ namespace ConCrawler {
                 (RegexFilter)new Regex(@"(\.jpg|\.css|\.js|\.gif|\.jpeg|\.png|\.ico|column|page|kpflight|user|evalsys|krmblog|qq|entryexit|assistant)",
                     RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)
             };
-
         static int maxCrawlDepth = int.Parse(ConfigurationManager.AppSettings["maxCrawlDepth"]);
         static int maxThreadCount = int.Parse(ConfigurationManager.AppSettings["maxThreadCount"]);
         static string url = ConfigurationManager.AppSettings["url"];

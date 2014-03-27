@@ -24,10 +24,7 @@ namespace ConCrawler.Helpers {
                     crawler.Headers.Set("Accept-Language", "en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3");
                     crawler.Headers.Set("Cache-Control", "max-age=0");
                     //MaxThreadSleepTime = 5000,
-                    //UseCookies = true
                     crawler.WebProxy = new WebProxy("182.118.31.110", 80);
-                    
-
                     crawler.Crawl();
                 }
                 catch (Exception error) {
