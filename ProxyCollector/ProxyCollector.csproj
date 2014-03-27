@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Entities\IPInfo.cs" />
     <Compile Include="Helpers\ProxyHtmlHelper.cs" />
+    <Compile Include="Helpers\XMLHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

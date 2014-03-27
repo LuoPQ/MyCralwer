@@ -42,7 +42,7 @@ namespace ConCrawler {
             crawler.Crawl(url, maxThreadCount, maxCrawlDepth, null, ExcludeFilter);
 
             XMLHelper.XmlSerializeToFile(Global.LinkList, path, "dest.xml", Encoding.UTF8);
-            XMLHelper.XmlSerializeToFile(Global.CityList, path, "citydetails" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xml", Encoding.UTF8);
+            XMLHelper.XmlSerializeToFile(Global.CityList, path, "citydetails_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xml", Encoding.UTF8);
 
             Console.WriteLine("解析完成。");
             Console.ReadKey();
