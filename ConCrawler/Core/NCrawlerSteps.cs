@@ -10,14 +10,21 @@ using System.Net;
 using System.Configuration;
 using ConCrawler.Helpers;
 
-namespace ConCrawler.Core {
-    internal class UrlCollectorStep : IPipelineStep {
+namespace ConCrawler.Core
+{
+    internal class UrlCollectorStep : IPipelineStep
+    {
         public string[] excludeFilter = ConfigurationManager.AppSettings["excludeFilter"].Split('|');
         public string[] includeFilter = ConfigurationManager.AppSettings["includeFilter"].Split('|');
         static int count = 0;
         public void Process(NCrawler.Crawler crawler, NCrawler.PropertyBag propertyBag) {
             lock (this) {
+                if (propertyBag.StatusCode == HttpStatusCode.Forbidden || propertyBag.StatusCode == HttpStatusCode.NotFound) {
+                    return;
+                }
+
                 var url = propertyBag.Step.Uri.AbsoluteUri;
+
                 if (includeFilter.Count(k => url.Contains(k)) <= 0) {
                     return;
                 }
@@ -25,9 +32,9 @@ namespace ConCrawler.Core {
                     return;
                 }
                 if (excludeFilter.Count(e => url.Contains(e)) <= 0) {
-                    //if (!url.Contains("cityCode")) {
-                    //    return;
-                    //}
+                    if (!url.Contains("cityCode")) {
+                        return;
+                    }
                     Console.Out.WriteLine(ConsoleColor.Gray, "Url: {0},Status:{1}", url, propertyBag.StatusCode);
 
                     Global.LinkList.Add(new Link() {
