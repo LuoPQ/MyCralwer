@@ -28,9 +28,10 @@ namespace ConCrawler.Helpers {
         /// <summary>
         /// 将一个对象按xml序列化的方式写入到一个文件中
         /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="path"></param>
-        /// <param name="encoding"></param>
+        /// <param name="obj">要序列化的对象</param>
+        /// <param name="dirctoryPath">文件的保存目录</param>
+        /// <param name="fileName">文件名</param>
+        /// <param name="encoding">编码方式</param>
         public static void XmlSerializeToFile(object obj, string dirctoryPath, string fileName, Encoding encoding) {
             if (string.IsNullOrWhiteSpace(dirctoryPath)) {
                 throw new ArgumentNullException("dirctoryPath");

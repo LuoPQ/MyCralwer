@@ -5,9 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ConCrawler.Entities {
-    public class CityItem {
+    /// <summary>
+    /// 信息类别
+    /// </summary>
+    public class InfoCategory {
         public string Key { get; set; }
         public string Name { get; set; }
-        public string Content { get; set; }
+        public List<InfoItem> InfoItems = new List<InfoItem>();
     }
 }

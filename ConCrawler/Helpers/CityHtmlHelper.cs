@@ -12,14 +12,18 @@ using ConCrawler.Entities;
 
 namespace ConCrawler.Helpers {
     public class CityHtmlHelper {
-        static readonly string[] CityItems = ConfigurationManager.AppSettings["cityItems"].Split('|');
-
+        static readonly string[] cityItems = ConfigurationManager.AppSettings["cityItems"].Split('|');
+        /// <summary>
+        /// 获取城市详情
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public static CityDetails GetCityDetails(string url) {
             CityDetails cityDetails = new CityDetails();
             cityDetails.CityCode = url.Substring(url.IndexOf("=") + 1);
             cityDetails.Url = url;
             string cityName = "";
-            foreach (var item in CityItems) {
+            foreach (var item in cityItems) {
                 cityDetails.CityItems.Add(GetDataFromHtml(url, item, out cityName));
                 if (!string.IsNullOrWhiteSpace(cityName)) {
                     cityDetails.CityName = cityName;
@@ -28,7 +32,14 @@ namespace ConCrawler.Helpers {
             return cityDetails;
         }
 
-        private static CityItem GetDataFromHtml(string url, string item, out string cityName) {
+        /// <summary>
+        /// 获取城市某一项信息
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="item"></param>
+        /// <param name="cityName"></param>
+        /// <returns></returns>
+        private static InfoItem GetDataFromHtml(string url, string item, out string cityName) {
             var itemUrl = url + "&column=" + item;
             var browser = new ScrapingBrowser() {
                 Proxy = new WebProxy("182.118.31.110", 80)
@@ -37,7 +48,7 @@ namespace ConCrawler.Helpers {
 
             if (html.Contains("非常抱歉")) {
                 cityName = "";
-                return new CityItem() {
+                return new InfoItem() {
                     Key = item,
                     Name = "",
                     Content = "",
@@ -49,7 +60,7 @@ namespace ConCrawler.Helpers {
             var htmlNode = htmlDocument.DocumentNode;
             cityName = htmlNode.CssSelect("div.intronav").FirstOrDefault().CssSelect("h2").FirstOrDefault().InnerText;
             var node = htmlNode.CssSelect("div.introright").FirstOrDefault();
-            return new CityItem() {
+            return new InfoItem() {
                 Key = item,
                 Name = node.CssSelect("p.introrighttit").FirstOrDefault().InnerText,
                 Content = node.InnerText

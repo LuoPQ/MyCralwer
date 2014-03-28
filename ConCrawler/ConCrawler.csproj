@@ -66,12 +66,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\AirportComplexInfo.cs" />
+    <Compile Include="Entities\AirportDetails.cs" />
+    <Compile Include="Entities\AirportSimplyInfo.cs" />
     <Compile Include="Entities\CityDetails.cs" />
-    <Compile Include="Entities\CityItem.cs" />
+    <Compile Include="Entities\InfoItem.cs" />
     <Compile Include="Core\Global.cs" />
     <Compile Include="Core\NCrawlerSteps.cs" />
     <Compile Include="Entities\Link.cs" />
+    <Compile Include="Entities\InfoCategory.cs" />
     <Compile Include="Extensions\TextWriterExt.cs" />
+    <Compile Include="Helpers\AirportHtmlHelper.cs" />
     <Compile Include="Helpers\CityHtmlHelper.cs" />
     <Compile Include="Helpers\NCrawlerHelper.cs" />
     <Compile Include="Helpers\XMLHelper.cs" />

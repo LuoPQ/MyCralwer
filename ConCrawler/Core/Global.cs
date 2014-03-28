@@ -24,5 +24,10 @@ namespace ConCrawler.Core {
         /// 城市信息列表
         /// </summary>
         public static List<CityDetails> CityList = new List<CityDetails>();
+
+        /// <summary>
+        /// 保存机场链接
+        /// </summary>
+        public static List<Link> AirportLinks = new List<Link>();
     }
 }

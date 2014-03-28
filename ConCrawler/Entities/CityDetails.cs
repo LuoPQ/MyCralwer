@@ -19,10 +19,10 @@ namespace ConCrawler.Entities {
         /// </summary>
         public string Url { get; set; }
 
-        public List<CityItem> CityItems { get; set; }
+        public List<InfoItem> CityItems { get; set; }
 
         public CityDetails() {
-            CityItems = new List<CityItem>();
+            CityItems = new List<InfoItem>();
         }
     }
 }
