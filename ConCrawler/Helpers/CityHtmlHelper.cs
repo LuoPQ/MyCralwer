@@ -1,5 +1,4 @@
-﻿using ConCrawler.Core;
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
 using ScrapySharp.Network;
 using System;
 using System.Collections.Generic;
@@ -9,6 +8,7 @@ using System.Threading.Tasks;
 using ScrapySharp.Extensions;
 using System.Configuration;
 using System.Net;
+using ConCrawler.Entities;
 
 namespace ConCrawler.Helpers {
     public class CityHtmlHelper {

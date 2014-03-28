@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConCrawler.Core {
+namespace ConCrawler.Entities {
     public class CityDetails {
         /// <summary>
         /// 城市代码

@@ -66,8 +66,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\CityDetails.cs" />
-    <Compile Include="Core\CityItem.cs" />
+    <Compile Include="Entities\CityDetails.cs" />
+    <Compile Include="Entities\CityItem.cs" />
     <Compile Include="Core\Global.cs" />
     <Compile Include="Core\NCrawlerSteps.cs" />
     <Compile Include="Entities\Link.cs" />

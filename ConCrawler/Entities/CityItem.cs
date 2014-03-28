@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConCrawler.Core {
+namespace ConCrawler.Entities {
     public class CityItem {
         public string Key { get; set; }
         public string Name { get; set; }
