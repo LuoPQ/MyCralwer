@@ -9,11 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Text.RegularExpressions;
+using System.Net;
 
 namespace ConCrawler.Helpers {
     public class AirportHtmlHelper {
         static ScrapingBrowser browser = new ScrapingBrowser() {
-            Encoding = Encoding.UTF8
+            Encoding = Encoding.UTF8,
+            Proxy = new WebProxy("182.118.31.110", 80)
         };
         static HtmlDocument htmlDocument = new HtmlDocument();
 
@@ -28,11 +30,11 @@ namespace ConCrawler.Helpers {
             var htmlNode = htmlDocument.DocumentNode;
             string title = htmlNode.CssSelect("h2.main-title").First().InnerText;
             int leftBracketIndex = title.IndexOf("(");
-            int rightBracketIndex = title.IndexOf(")");
+            int rightBracketIndex = title.LastIndexOf(")");
             int length = title.Length;
 
             return new AirportDetails() {
-                Code = title.Substring(leftBracketIndex + 1, length - rightBracketIndex - 1),
+                Code = title.Substring(leftBracketIndex + 1, rightBracketIndex - leftBracketIndex - 1),
                 Name = title.Substring(0, leftBracketIndex),
                 Region = title.Substring(rightBracketIndex + 2),
                 Url = url,
