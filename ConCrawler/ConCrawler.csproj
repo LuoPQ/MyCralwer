@@ -97,6 +97,7 @@
     <Content Include="DLL\NCrawler.HtmlProcessor.dll" />
     <Content Include="DLL\ScrapySharp.Core.dll" />
     <Content Include="DLL\ScrapySharp.dll" />
+    <Content Include="Preview.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
